@@ -1,4 +1,5 @@
 from utils import load_data, save_data
+from encryption import encrypt_password, decrypt_password
 import string
 import random
 
@@ -11,18 +12,22 @@ def add_password():
     username = input("Username: ")
     password = input("Password: ")
 
+    encrypted_password = encrypt_password(password)
+
     data = load_data()
-    data[site] = {"username": username, "password": password}
+    data[site] = {"username": username, "password": encrypted_password}
     save_data(data)
-    print("✅ Password saved successfully.")
+    print(f"✅ Password for '{site}' saved (encrypted).")
 
 def view_passwords():
     data = load_data()
     if not data:
-        print("No passwords saved yet.")
+        print("No passwords saved.")
         return
     for site, creds in data.items():
-        print(f"{site} → {creds['username']} / {creds['password']}")
+        decrypted = decrypt_password(creds['password'])
+        print(f"{site} → {creds['username']} / {decrypted}")
+
 
 def run_cli():
     while True:
