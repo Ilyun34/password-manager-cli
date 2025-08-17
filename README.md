@@ -1,13 +1,34 @@
-# Password Manager CLI
+# 🔐 Password Manager CLI
 
-A simple Python command-line application to store, view, and generate secure passwords.
+A simple command-line password manager written in Python.  
+Securely stores credentials for your favorite websites and services in an encrypted JSON file.
 
-## Features
+---
 
-- Add a new password for a website or service
-- View all saved credentials
-- Generate strong random passwords
-- Store data securely in a local JSON file
+## ✨ Features
 
-```bash
-python main.py
+- ✅ Add and store credentials (site, username, password)
+- 🔐 Encrypt passwords before saving (AES encryption via `cryptography`)
+- 🔓 Decrypt and view stored credentials
+- 🔁 Generate strong, random passwords
+- 🧠 Local storage using `passwords.json`
+- 📁 Encryption key auto-generated and stored in `secret.key`
+
+---
+
+## 📁 Project Structure
+
+password-manager/
+├── main.py          # Entry point
+├── cli.py           # CLI interface (add, view, generate)
+├── utils.py         # JSON data load/save
+├── encryption.py    # Encryption & decryption logic
+├── passwords.json   # Encrypted credentials (auto-generated)
+├── secret.key       # Encryption key (auto-generated)
+├── .gitignore       # Excludes sensitive files from version control
+└── README.md
+
+
+
+
+
