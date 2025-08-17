@@ -11,6 +11,8 @@ Securely stores credentials for your favorite websites and services in an encryp
 - 🔐 Encrypt passwords before saving (AES encryption via `cryptography`)
 - 🔓 Decrypt and view stored credentials
 - 🔁 Generate strong, random passwords
+- 🗑️ Delete saved passwords
+- ✏️ Update credentials for existing entries
 - 🧠 Local storage using `passwords.json`
 - 📁 Encryption key auto-generated and stored in `secret.key`
 
