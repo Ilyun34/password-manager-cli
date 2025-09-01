@@ -1,10 +1,9 @@
 from __future__ import annotations
-
 from typing import Dict, TypedDict, Any, Final
+from pathlib import Path
 import json
-import os
 
-FILE: Final[str] = "passwords.json"
+DEFAULT_FILE: Final[Path] = Path("passwords.json")
 
 class Credential(TypedDict):
     username: str
@@ -14,10 +13,9 @@ class Credential(TypedDict):
 Vault = Dict[str, Credential]
 
 def load_data() -> Vault:
-    if not os.path.exists(FILE):
+    if not path.exists(path: Path = DEFAULT_FILE) -> Vault:
         return {}
-    with open(FILE, "r", encoding="utf-8") as f:
-        raw: Any = json.load(f)
+    raw: Any = json.loads(path.read_text(encoding="utf-8"))
 
     # Defensive normalization to Vault
     vault: Vault = {}
@@ -28,12 +26,12 @@ def load_data() -> Vault:
                 and isinstance(creds, dict)
                 and "username" in creds
                 and "password" in creds
-                and isinstance(creds["username"], str)
-                and isinstance(creds["password"], str)
             ):
-                vault[site] = {"username": creds["username"], "password": creds["password"]}
+                vault[site] = {
+                    "username": str(creds["username"]),
+                    "password": str(creds["password"])
+                }
     return vault
 
-def save_data(data: Vault) -> None:
-    with open(FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4)
+def save_data(data: Vault, path: Path = DEFAULT_FILE) -> None:
+    path.write_text(json.dumps(data, indent=4), encoding="utf-8")
