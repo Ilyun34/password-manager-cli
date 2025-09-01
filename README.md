@@ -22,13 +22,14 @@ Securely stores credentials for your favorite websites and services in an encryp
 
 password-manager/
 ├── main.py          # Entry point
-├── cli.py           # CLI interface (add, view, generate)
-├── utils.py         # JSON data load/save
-├── encryption.py    # Encryption & decryption logic
-├── passwords.json   # Encrypted credentials (auto-generated)
-├── secret.key       # Encryption key (auto-generated)
-├── .gitignore       # Excludes sensitive files from version control
-└── README.md
+├── src/             # Source directory
+  ├── cli.py           # CLI interface (add, view, generate)
+  ├── utils.py         # JSON data load/save
+  ├── encryption.py    # Encryption & decryption logic
+  ├── passwords.json   # Encrypted credentials (auto-generated)
+  ├── secret.key       # Encryption key (auto-generated)
+  ├── .gitignore       # Excludes sensitive files from version control
+  └── README.md
 
 
 
